@@ -1,0 +1,60 @@
+<div class="h-screen bg-slate-100 overflow-scroll ">
+    <div class="">
+    
+    <app-header></app-header>
+    <div class="top-0 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Leave Approval</h1>
+      </div>
+    
+      <div class="flex justify-center">
+        <div class="overflow-x-scroll">
+            <br>
+            <div
+            class=""
+          >
+            <table class="">
+              <thead class="text-xs uppercase dark:bg-gray-700 text-white">
+                <tr>
+                  <ng-container></ng-container>
+        
+                  <th scope="col" class="py-3 px-6">Number Of Days</th>
+                  <th scope="col" class="py-3 px-6">Start Date</th>
+                  <th scope="col" class="py-3 px-6">End Date</th>
+                  <th scope="col" class="py-3 px-6">Reason</th>
+                  <th scope="col" class="py-3 px-6">Type</th>
+                  <th scope="col" class="py-3 px-6">Status</th>
+                
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  class="bg-gray border-b bg-white dark:border-gray-700"
+                  *ngFor="let row of productdata"
+                >
+                  <td class="py-4 px-6">
+                    {{ row.num }}
+                  </td>
+                  <td class="py-4 px-6">
+                    {{ row.sd | date }}
+                  </td>
+        
+                  <td class="py-4 px-6">{{ row.ed | date }}</td>
+        
+                  <td class="py-4 px-6">{{ row.rs }}</td>
+                  <td class="py-4 px-6 text-left">{{ row.type }}</td>
+                  <td class="py-4 px-6 "><div class="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                    <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-4 h-4 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <label for="bordered-radio-2" class="py-4 ml-2 w-full text-sm font-medium text-blue-700 ">Approved</label>
+                </div></td>
+                </tr>
+                <tr class="bg-gray border-b bg-white dark:border-gray-700">
+                 
+              
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        
+          </div>
+      </div>
+    </div>

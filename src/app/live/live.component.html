@@ -1,0 +1,221 @@
+<div class="h-screen bg-slate-100 ">
+<div class="">
+  <app-header></app-header>
+  <div class="top-0 max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-bold tracking-tight text-gray-900">Leaves</h1>
+  </div>
+
+<div class="flex items-center justify-evenly h-full  ">
+<div class="flex flex-col  ">
+  <div class="flex flex-row  items-center justify-center ">
+<!-- <div class=" grid  gap-6 mb-8 mr   "> -->
+  <div
+  class="min-w-0 rounded-lg shadow-xs  bg-white dark:bg-gray-800 mr-2 "
+  >
+  <div class="p-4 flex items-center">
+    <div
+      class="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4"
+    >
+    <img class="h-8 w-8" src="./assets/leave.png" alt="Your Company">
+    </div>
+    <div>
+      <p class="  font-medium text-white">
+     Paid Leaves
+      </p>
+      <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+        2
+      </p>
+    </div>
+  </div>
+  <!-- </div> -->
+  
+  </div>
+<div
+class="min-w-0 rounded-lg shadow-xs  bg-white dark:bg-gray-800"
+>
+<div class="p-4 flex items-center">
+  <div
+    class="p-3 rounded-full text-orange-500 dark:text-orange-100 bg-orange-100 dark:bg-orange-500 mr-4"
+  >
+  <img class="h-8 w-8" src="./assets/leave.png" alt="Your Company">
+  </div>
+  <div>
+    <p class=" font-medium text-white">
+    Compensatory Leaves
+    </p>
+    <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+      1
+    </p>
+  </div>
+</div>
+<!-- </div> -->
+
+</div>
+ 
+  </div>
+  <div class="overflow-x-scroll">
+    <br>
+    <div
+    class=""
+  >
+    <table class="">
+      <thead class="text-xs uppercase dark:bg-gray-700 text-white">
+        <tr>
+          <ng-container></ng-container>
+
+          <th scope="col" class="py-3 px-6">Number Of Days</th>
+          <th scope="col" class="py-3 px-6">Start Date</th>
+          <th scope="col" class="py-3 px-6">End Date</th>
+          <th scope="col" class="py-3 px-6">Reason</th>
+          <th scope="col" class="py-3 px-6">Type</th>
+          <th scope="col" class="py-3 px-6">Status</th>
+        
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="bg-gray border-b bg-white dark:border-gray-700"
+          *ngFor="let row of productdata"
+        >
+          <td class="py-4 px-6">
+            {{ row.num }}
+          </td>
+          <td class="py-4 px-6">
+            {{ row.sd | date }}
+          </td>
+
+          <td class="py-4 px-6">{{ row.ed | date }}</td>
+
+          <td class="py-4 px-6">{{ row.rs }}</td>
+          <td class="py-4 px-6 text-left">{{ row.type }}</td>
+          <td class="py-4 px-6 text-left">{{ row.status}}</td>
+        </tr>
+        <tr class="bg-gray border-b bg-white dark:border-gray-700">
+         
+      
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  </div>
+
+</div>
+
+<div class="">
+  <h2 class=" text-center ml-20 uppercase font-bold">Apply for leave</h2>
+  
+    <div class="flex ml-20 border-2 p-6 border-gray-600 bg-white">
+   
+      <form [formGroup]="productForm">
+        <div>
+          <div>
+            <label
+              for="select"
+              class="block mb-2 font-medium text-black text-xs uppercase"
+            >
+              type
+            </label>
+            <div>
+              <mat-select
+                class="block p-2.5 text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:border-orange-500"
+                formControlName="type"
+              >
+                <mat-option *ngFor="let type of type" [value]="type.value">
+                  {{ type.viewValue }}
+                </mat-option>
+              </mat-select>
+            </div>
+          </div>
+          <br />
+          <div>
+            <label
+              for="num"
+              class="block mb-2 font-medium text-black text-xs uppercase"
+              >Number Of Days</label
+            >
+            <input
+              type="number"
+              id="num"
+              class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+              formControlName="num"
+            />
+          </div>
+          <br />
+          <div>
+            <label
+              for="date"
+              class="block mb-2 font-medium text-xs uppercase text-black"
+              >Start Date</label
+            >
+            <mat-form-field
+              class="bg-gray-50 border h-16 border-gray-300 text-gray-900 text-sm rounded-lg focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500"
+            >
+              <input formControlName="sd" matInput [matDatepicker]="picker" />
+
+              <mat-datepicker-toggle
+                matSuffix
+                class="text-black"
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <br />
+          <div>
+            <label
+              for="dat"
+              class="block mb-2 font-medium text-black text-xs uppercase"
+              >End Date</label
+            >
+            <mat-form-field
+              class="bg-gray-50 border h-16 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <input formControlName="ed" matInput [matDatepicker]="pickers" />
+
+              <mat-datepicker-toggle
+                matSuffix
+                class="text-black"
+                [for]="pickers"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickers></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <br />
+        <div>
+          <label
+            for="message"
+            class="block mb-2 font-medium text-black text-xs uppercase"
+            >Reason</label
+          >
+          <textarea
+            id="message"
+            rows="4"
+            class="block p-2.5 w-full text-sm bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Your message..."
+            formControlName="rs"
+          ></textarea>
+        </div>
+        <br />
+
+        <button
+          type="submit"
+          class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          (click)="addproducts()"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+</div>
+
